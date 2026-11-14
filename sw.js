@@ -1,4 +1,4 @@
-const CACHE_NAME = "plete-2.2";
+const CACHE_NAME = "plete-2.5";
 
 const FILES = [
   "./",
@@ -13,7 +13,9 @@ const FILES = [
   "fonts/Poppins-Medium.ttf",
   "fonts/Poppins-SemiBold.ttf",
   "fonts/Poppins-Bold.ttf",
-  "about.html"
+  "about.html",
+  "images/splash.jpg",
+  "images/splash-bg.jpg"
 ];
 
 self.addEventListener("install", event => {

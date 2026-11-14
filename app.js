@@ -98,3 +98,21 @@ start();
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js");
 }
+
+(function () {
+  const splash = document.getElementById("splash");
+  if (!splash) return;
+
+  let seen = false;
+  try {
+    seen = sessionStorage.getItem("splashSeen") === "1";
+    sessionStorage.setItem("splashSeen", "1");
+  } catch (e) {}
+
+  if (seen) { splash.remove(); return; }
+
+  setTimeout(() => {
+    splash.classList.add("hide");
+    setTimeout(() => splash.remove(), 600);
+  }, 2500);
+})();
