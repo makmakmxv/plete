@@ -1,28 +1,57 @@
 let data;
 
 async function start() {
-  const res = await fetch("fares.json");
-  data = await res.json();
+  try {
+    const res = await fetch("fares.json");
+    if (!res.ok) throw new Error("fares.json not found (" + res.status + ")");
+    data = await res.json();
 
-  const names = ["Poblacion", ...data.places.map(p => p.name)];
-  for (const id of ["from", "to"]) {
-    const select = document.getElementById(id);
-    names.forEach(n => select.add(new Option(n, n)));
-  }
-  document.getElementById("to").selectedIndex = 1;
+    const names = ["Poblacion", ...data.places.map(p => p.name)];
+    for (const id of ["from", "to"]) {
+      const select = document.getElementById(id);
+      select.innerHTML = "";
+      names.forEach(n => select.add(new Option(n, n)));
+    }
+    document.getElementById("to").selectedIndex = 1;
 
-  ["from", "to", "discount"].forEach(id =>
-    document.getElementById(id).addEventListener("change", showFare)
-  );
+    ["from", "to", "discount"].forEach(id =>
+      document.getElementById(id).addEventListener("change", showFare)
+    );
 
-  document.getElementById("swap").addEventListener("click", () => {
-    const from = document.getElementById("from");
-    const to = document.getElementById("to");
-    [from.value, to.value] = [to.value, from.value];
+    document.getElementById("swap").addEventListener("click", () => {
+      const from = document.getElementById("from");
+      const to = document.getElementById("to");
+      [from.value, to.value] = [to.value, from.value];
+      showFare();
+    });
+
+    renderHotline();
     showFare();
-  });
+  } catch (err) {
+    document.getElementById("fare-note").textContent =
+      "Could not load fares: " + err.message;
+  }
+}
 
-  showFare();
+function renderHotline() {
+  const h = data.hotline || {};
+  const btn = document.getElementById("hotline-btn");
+  const note = document.getElementById("hotline-note");
+
+  document.getElementById("hotline-name").textContent = h.name || "LGU Tuguegarao City";
+
+  if (h.number) {
+    btn.href = "tel:" + h.number.replace(/[^\d+]/g, "");
+    btn.textContent = "📞 " + h.number;
+    btn.hidden = false;
+    note.textContent = "Tap the button to call";
+  } else {
+    btn.hidden = true;
+    note.textContent = "0912-3456-789";
+  }
+
+  document.getElementById("updated").textContent =
+    data.updatedAsOf ? "Fares: " + data.updatedAsOf : "";
 }
 
 function showFare() {

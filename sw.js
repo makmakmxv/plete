@@ -1,4 +1,4 @@
-const CACHE_NAME = "plete-v6";
+const CACHE_NAME = "plete-2.2";
 
 const FILES = [
   "./",
@@ -8,7 +8,12 @@ const FILES = [
   "fares.json",
   "manifest.json",
   "images/cityhall.jpg",
-  "images/plete-logo.jpg"
+  "images/icon-192.png",
+  "images/icon-512.png",
+  "fonts/Poppins-Medium.ttf",
+  "fonts/Poppins-SemiBold.ttf",
+  "fonts/Poppins-Bold.ttf",
+  "about.html"
 ];
 
 self.addEventListener("install", event => {
