@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLETE</title>
+  <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#3aa675" />
+    <link rel="icon" type="image/png" href="images/plete-logo.jpg" />
+</head>
+<body>
+    <div class="app">
+    <img class="banner" src="images/cityhall.jpg" alt="Tuguegarao City Hall" />
+    <header>
+      <h1>PLETE</h1>
+      <p class="tagline">Pamasahe Laging Eksakto Ta Every-trip</p>
+      <p class="sub">Tuguegarao Tricycle Fare Guide</p>
+    </header>
+
+    <main class="card">
+      <label for="from">From</label>
+      <select id="from"></select>
+
+      <button id="swap" type="button">⇅ Swap Origin &amp; Destination</button>
+
+      <label for="to">To</label>
+      <select id="to"></select>
+
+      <label class="toggle">
+        <input type="checkbox" id="discount" />
+        <span>Student / Senior / PWD</span>
+      </label>
+
+      <div class="fare-box">
+        <div id="fare-label">Official Regular Fare</div>
+        <div id="fare-amount">-</div>
+        <div id="fare-note"></div>
+      </div>
+
+      <div class="reminder">
+        <strong>Reminder:</strong> Pay only the official fare set by the LGU of Tuguegarao City.
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

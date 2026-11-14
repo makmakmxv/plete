@@ -1,0 +1,12 @@
+{
+  "name": "PLETE - Tuguegarao Tricycle Fare Guide",
+  "short_name": "PLETE",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f3faf6",
+  "theme_color": "#3aa675",
+  "icons": [
+  { "src": "images/plete-logo.jpg", "sizes": "512x512", "type": "image/jpeg" },
+  { "src": "images/plete-logo.jpg", "sizes": "512x512", "type": "image/jpeg" }
+  ]
+}
