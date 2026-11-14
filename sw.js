@@ -1,4 +1,4 @@
-const CACHE_NAME = "plete-2.5";
+const CACHE_NAME = "plete-2.6";
 
 const FILES = [
   "./",
